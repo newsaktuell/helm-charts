@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "keycloak-operator.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "keycloak-operator.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      name: {{ include "keycloak-operator.fullname" . }}
+  template:
+    metadata:
+      labels:
+        name: {{ include "keycloak-operator.fullname" . }}
+    spec:
+      serviceAccountName: {{ include "keycloak-operator.fullname" . }}-sa
+      containers:
+        - name: {{ include "keycloak-operator.fullname" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+          - keycloak-operator
+          env:
+            {{ if .Values.runInClusterScope -}}
+            - name: WATCH_NAMESPACE
+              value: ''
+            {{- else -}}
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            {{- end }}
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: {{ include "keycloak-operator.fullname" . }}
+            {{ if .Values.images -}}
+            {{ if .Values.images.keycloak -}}
+            - name: RELATED_IMAGE_KEYCLOAK
+              value: {{ .Values.images.keycloak}}
+            {{- end }}
+            {{- end }}

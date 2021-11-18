@@ -1,0 +1,31 @@
+{{- if .Values.runInClusterScope -}}
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "keycloak-operator.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "keycloak-operator.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    namespace: {{ .Release.Namespace }}
+    name: {{ include "keycloak-operator.fullname" . }}-sa
+roleRef:
+  kind: ClusterRole
+  name: {{ include "keycloak-operator.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+---
+{{- else -}}
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "keycloak-operator.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels: {{- include "keycloak-operator.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "keycloak-operator.fullname" . }}-sa
+roleRef:
+  kind: Role
+  name: {{ include "keycloak-operator.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
