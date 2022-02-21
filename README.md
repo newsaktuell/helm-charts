@@ -25,3 +25,4 @@ You can then run `helm search repo newsaktuell` to see the charts.
 
 <!-- Keep full URL links to repo files because this README syncs from main to gh-pages.  -->
 [Apache 2.0 License](https://github.com/grafana/helm-charts/blob/main/LICENSE).
+
