@@ -12,10 +12,10 @@ entries:
     version: 0.0.1
   keycloak-operator:
   - apiVersion: v2
-    appVersion: 16.1.1
+    appVersion: 17.0.0
     created: "2022-01-31T13:42:08.874173299Z"
     description: Deploy keycloak-operator without OLM
-    digest: 362480f633ec17134a68e92beea1b10c2c97689b9581b57bff04d87874022fc8
+    digest: 27b86ed54a50f5b10fc7d0064810c0f3e4d412301326849aa19cce598f4fe94e
     name: keycloak-operator
     type: application
     urls:
