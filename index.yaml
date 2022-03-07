@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   common:
   - apiVersion: v2
+    created: "2022-03-07T14:07:45.998865724Z"
+    description: A Helm chart for Kubernetes
+    digest: 4aa076b048b245ee9581d6cf91c42572b552c56d7dc5833fae5df6e7567c78b2
+    name: common
+    type: library
+    urls:
+    - https://github.com/newsaktuell/helm-charts/releases/download/common-0.0.2/common-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2022-03-03T09:38:12.172388195Z"
     description: A Helm chart for Kubernetes
     digest: b86eaa920737ef0b45f590ec1f6e6efa5d33e88718fe6af3c296d74bd1a8f6f1
@@ -51,4 +60,4 @@ entries:
     urls:
     - https://github.com/newsaktuell/helm-charts/releases/download/keycloak-operator-0.1.2/keycloak-operator-0.1.2.tgz
     version: 0.1.2
-generated: "2022-03-03T09:38:12.172407996Z"
+generated: "2022-03-07T14:07:45.998885224Z"
