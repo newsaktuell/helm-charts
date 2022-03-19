@@ -15,7 +15,7 @@ spec:
       labels:
         name: {{ include "keycloak-operator.fullname" . }}
     spec:
-      serviceAccountName: {{ include "keycloak-operator.fullname" . }}-sa
+      serviceAccountName: {{ include "keycloak-operator.serviceAccountName" . }}
       containers:
         - name: {{ include "keycloak-operator.fullname" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
