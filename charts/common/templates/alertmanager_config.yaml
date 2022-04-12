@@ -1,0 +1,31 @@
+{{ if $.Values.alertmanager.enabled -}}
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: {{ include "common.fullname" $ }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "common.labels" $ | nindent 4 }}
+spec:
+  receivers:
+    - name: slack-{{ include "common.namespacedName" $ }}
+      slackConfigs:
+        - apiURL:
+            key: webhook_url
+            name: {{ include "common.fullname" $ }}-slack
+          channel: {{ $.Values.alertmanager.slack.channel | required "slack channel is required" }}
+          iconEmoji: ☠️
+          sendResolved: true
+          username: Alert Bot
+  route:
+    groupBy:
+      - namespace
+    groupInterval: 5m
+    groupWait: 30s
+    matchers:
+      - name: namespace
+        matchType: =
+        value: {{ $.Release.Namespace }}
+    receiver: slack-{{ include "common.namespacedName" $ }}
+    repeatInterval: 4h
+{{- end }}
