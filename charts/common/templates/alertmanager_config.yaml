@@ -22,10 +22,7 @@ spec:
       - namespace
     groupInterval: 5m
     groupWait: 30s
-    matchers:
-      - name: namespace
-        matchType: =
-        value: {{ $.Release.Namespace }}
+    matchers: []
     receiver: slack-{{ include "common.namespacedName" $ }}
     repeatInterval: 4h
 {{- end }}
