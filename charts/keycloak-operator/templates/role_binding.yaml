@@ -8,7 +8,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     namespace: {{ .Release.Namespace }}
-    name: {{ include "keycloak-operator.fullname" . }}-sa
+    name: {{ include "keycloak-operator.serviceAccountName" . }}
 roleRef:
   kind: ClusterRole
   name: {{ include "keycloak-operator.fullname" . }}
@@ -23,7 +23,7 @@ metadata:
   labels: {{- include "keycloak-operator.labels" . | nindent 4 }}
 subjects:
   - kind: ServiceAccount
-    name: {{ include "keycloak-operator.fullname" . }}-sa
+    name: {{ include "keycloak-operator.serviceAccountName" . }}
 roleRef:
   kind: Role
   name: {{ include "keycloak-operator.fullname" . }}
