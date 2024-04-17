@@ -39,6 +39,16 @@ entries:
     version: 0.0.1
   keycloak-operator:
   - apiVersion: v2
+    appVersion: 18.0.0-legacy
+    created: "2024-04-17T13:48:41.612203333Z"
+    description: Deploy keycloak-operator without OLM
+    digest: f772d21e57dc87ea05b52579b8c44583e8128a257ef4d62ea3d85a28654a6ee5
+    name: keycloak-operator
+    type: application
+    urls:
+    - https://github.com/newsaktuell/helm-charts/releases/download/keycloak-operator-0.1.6/keycloak-operator-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
     appVersion: 17.0.0
     created: "2022-01-31T13:42:08.874173299Z"
     description: Deploy keycloak-operator without OLM
@@ -78,4 +88,4 @@ entries:
     urls:
     - https://github.com/newsaktuell/helm-charts/releases/download/keycloak-operator-0.1.2/keycloak-operator-0.1.2.tgz
     version: 0.1.2
-generated: "2022-04-14T10:58:09.718411707Z"
+generated: "2024-04-17T13:48:41.612234912Z"
