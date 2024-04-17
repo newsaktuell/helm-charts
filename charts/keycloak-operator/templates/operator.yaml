@@ -20,8 +20,6 @@ spec:
         - name: {{ include "keycloak-operator.fullname" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command:
-          - keycloak-operator
           env:
             {{ if .Values.runInClusterScope -}}
             - name: WATCH_NAMESPACE
