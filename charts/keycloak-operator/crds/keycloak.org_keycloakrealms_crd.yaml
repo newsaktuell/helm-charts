@@ -831,6 +831,11 @@ spec:
                       - clientId
                       type: object
                     type: array
+                  defaultDefaultClientScopes:
+                    description: Default client scopes to add to all new clients
+                    items:
+                      type: string
+                    type: array
                   defaultLocale:
                     description: Default Locale
                     type: string
@@ -985,6 +990,33 @@ spec:
                     description: Minimum Quick Login Wait
                     format: int32
                     type: integer
+                  otpPolicyAlgorithm:
+                    description: OTP Policy Algorithm
+                    type: string
+                  otpPolicyDigits:
+                    description: OTP Policy Digits
+                    format: int32
+                    type: integer
+                  otpPolicyInitialCounter:
+                    description: OTP Policy Initial Counter
+                    format: int32
+                    type: integer
+                  otpPolicyLookAheadWindow:
+                    description: OTP Policy Look Ahead Window
+                    format: int32
+                    type: integer
+                  otpPolicyPeriod:
+                    description: OTP Policy Period
+                    format: int32
+                    type: integer
+                  otpPolicyType:
+                    description: OTP Policy Type
+                    type: string
+                  otpSupportedApplications:
+                    description: OTP Supported Applications
+                    items:
+                      type: string
+                    type: array
                   passwordPolicy:
                     description: Realm Password Policy
                     type: string
@@ -1180,6 +1212,9 @@ spec:
                     items:
                       description: https://www.keycloak.org/docs-api/10.0/rest-api/index.html#_userfederationproviderrepresentation
                       properties:
+                        changedSyncPeriod:
+                          format: int32
+                          type: integer
                         config:
                           additionalProperties:
                             type: string

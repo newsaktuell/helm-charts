@@ -39,6 +39,10 @@ spec:
             {{ if .Values.images -}}
             {{ if .Values.images.keycloak -}}
             - name: RELATED_IMAGE_KEYCLOAK
-              value: {{ .Values.images.keycloak}}
+              value: {{ .Values.images.keycloak }}
             {{- end }}
+            {{ if .Values.images.keycloakInitContainer -}}
+            - name: RELATED_IMAGE_KEYCLOAK_INIT_CONTAINER
+              value: {{ .Values.images.keycloakInitContainer }}
+            {{- end }}            
             {{- end }}

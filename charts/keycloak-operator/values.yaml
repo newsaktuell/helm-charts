@@ -18,3 +18,4 @@ runInClusterScope: false
 
 images:
   keycloak:
+  keycloakInitContainer:
